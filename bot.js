@@ -27,7 +27,7 @@ var command = function(message){
 	}
 
 //Seperate each word in an array
-if (message.content.charAt(0) != "!") return;
+if (message.content.charAt(0) != config.prefix) return;
 	message.content = message.content.substring(1,message.content.length);
 	var args = message.content.split(" ");
 	var cmd = args[0];
