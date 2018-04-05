@@ -8,6 +8,15 @@ var dispatcher = null
 var startTime, endTime
 var lastimage = ""
 
+fs.readdir("./events/", (err, files) => {
+	if(err) return console.error(err);
+	files.forEach(file =? {
+		let eventFunction = require("./events/${file}");
+		let eventName = file.split(".")[0];
+		client.on(eventName, (...args) =? eventFunction.run(client, ...args));
+	});
+});
+
 client.on('ready', () => {
 	console.log('Logged in as ${client.user.tag}!')
 	client.user.setGame("!help")
@@ -32,6 +41,10 @@ var end = function(){
 }
 
 var command = function(message){
+
+if (message.author.bot) return;
+	if(message.content.indexOf(config.prefix) !== 0) return;
+
 	//Save Uploaded Images to Drive
 	var images = message.attachments.array();
 	for (var i = 0; i <images.length; i++){
@@ -40,19 +53,19 @@ var command = function(message){
 	}
 
 //Seperate each word in an array
-if (message.content.charAt(0) != config.prefix) return;
-	message.content = message.content.substring(1,message.content.length);
-	var args = message.content.split(" ");
-	var cmd = args[0];
-	var otherWordsThatArentTheFirst = ""
-	for (var i = 1; i < args.length; i++){
-		otherWordsThatArentTheFirst = otherWordsThatArentTheFirst + args[i] + " ";
-	}
-	var otherWordsOfficial = otherWordsThatArentTheFirst;
-	console.log(args);
+const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
+const command = args.shift().toLowerCase();
 
+try{
+	let commandFile = require("./commands/${command}.js");
+	commandFile.run(client, message, args);
+} catch (err) {
+	console.error(err);
+}
+
+/*
 //Main Switch Case
-	switch(cmd){
+	switch(command){
 		case "invert":
 			message.channel.send("Inverting...")
 			download.image({
@@ -90,6 +103,6 @@ if (message.content.charAt(0) != config.prefix) return;
 		default:
 			message.reply("What's Up?")
 			break;
-	}
+	}*/
 }
 client.login(config.token);
