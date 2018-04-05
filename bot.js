@@ -63,46 +63,5 @@ try{
 	console.error(err);
 }
 
-/*
-//Main Switch Case
-	switch(command){
-		case "invert":
-			message.channel.send("Inverting...")
-			download.image({
-				irl: lastimage,
-				dest: 'images'
-			}).then(({
-				filename,
-				image
-			}) => {
-				console.log('File saved to', filename)
-
-				//Modify Image
-				Jimp.read(filename, function modify(err,please){
-					if(err) throw err;
-					please.resize(Jimp.AUTHO, 500)
-					.invert()
-					.write(filename); //save
-				});
-
-				function waitaBit(){
-					var embed = new Discord.RichEmbed().attachFile(filename).setDescription("Inverted bois")
-					message.channel.send({
-						embed
-					})
-				}
-				setTimeout(waitaBit, 1500)
-
-			}).catch((err) => {
-				throw err
-			})
-			break;
-		case "ping":
-			end();
-			break;
-		default:
-			message.reply("What's Up?")
-			break;
-	}*/
 }
 client.login(config.token);
