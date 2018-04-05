@@ -5,7 +5,7 @@ const Jimp = require("jimp")
 const client = new Discord.Client
 const config = require("./config.json")
 var dispatcher = null
-
+var startTime, endTime
 var lastimage = ""
 
 client.on('ready', () => {
@@ -15,8 +15,21 @@ client.on('ready', () => {
 
 client.on('message', message => {
 	command(message);
+	start();
 	console.log(msg.author.username + " (" + message.author.tag + "), said \"" + message.content + "\" on #" + message.channel.name)
 });
+
+//Start Timer
+var start = function(){
+	startTime = new Date();
+}
+
+//End Timer and Record Duration
+var end = function(){
+	endTime = new Date();
+	var timeDiff = endTime - startTime;
+	message.channel.send("Pong! `" + timeDiff + " ms`")
+}
 
 var command = function(message){
 	//Save Uploaded Images to Drive
@@ -70,6 +83,9 @@ if (message.content.charAt(0) != config.prefix) return;
 			}).catch((err) => {
 				throw err
 			})
+			break;
+		case "ping":
+			end();
 			break;
 		default:
 			message.reply("What's Up?")
