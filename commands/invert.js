@@ -1,11 +1,12 @@
 const download = require('image-downloader')
 const Jimp = require("jimp")
+const Discord = require("discord.js")
 exports.run = (client, message, args, lastimage) => {
 
 			message.channel.send("Inverting...")
 			download.image({
 				url: lastimage,
-				dest: './images/'
+				dest: 'images'
 			}).then(({
 				filename,
 				image
