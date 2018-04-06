@@ -1,4 +1,13 @@
+const download = require('image-downloader')
+var lastimage = ""
 exports.run = (client, message, args) => {
+
+	//Save Uploaded Images to Drive
+	var images = message.attachments.array();
+	for (var i = 0; i <images.length; i++){
+		console.log(images[i].url)
+		lastimage = images[i].url;
+	}
 			message.channel.send("Inverting...")
 			download.image({
 				url: lastimage,

@@ -1,4 +1,11 @@
+/*
+//End Timer and Record Duration
+var end = function(){
+	endTime = new Date();
+	var timeDiff = endTime - startTime;
+	message.channel.send("Pong! `" + timeDiff + " ms`")
+}*/
+
 exports.run = (client, message, args) => {
-//	message.reply("Pong!").catch(console.error);
-	end();
+	message.reply("Pong!").catch(console.error);
 }
