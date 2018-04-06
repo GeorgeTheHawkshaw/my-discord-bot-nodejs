@@ -1,7 +1,6 @@
 const Discord = require("discord.js")
 const download = require('image-downloader')
 const fs = require("fs");
-const Jimp = require("jimp")
 const client = new Discord.Client
 const config = require("./config.json")
 var dispatcher = null

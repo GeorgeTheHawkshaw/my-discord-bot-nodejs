@@ -1,7 +1,8 @@
 const download = require('image-downloader')
-var lastimage = ""
+const Jimp = require("jimp")
 exports.run = (client, message, args) => {
 
+var lastimage = ""
 	//Save Uploaded Images to Drive
 	var images = message.attachments.array();
 	for (var i = 0; i <images.length; i++){
