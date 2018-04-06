@@ -5,6 +5,7 @@ const client = new Discord.Client
 const config = require("./config.json")
 var dispatcher = null
 var startTime, endTime
+var lastimage = ""
 
  fs.readdir("./events/", (err, files) => {
    if (err) return console.error(err);
@@ -29,6 +30,13 @@ var start = function(){
 
 var command = function(message){
 
+	//Save Uploaded Images to Drive
+	var images = message.attachments.array();
+	for (var i = 0; i <images.length; i++){
+		console.log(images[i].url)
+		lastimage = images[i].url;
+	}
+
 if (message.author.bot) return;
 	if(message.content.indexOf(config.prefix) !== 0) return;
 
@@ -39,7 +47,7 @@ const command = args.shift().toLowerCase();
 
 try{
 	let commandFile = require(`./commands/${command}.js`);
-	commandFile.run(client, message, args);
+	commandFile.run(client, message, args, lastimage);
 } catch (err) {
 	console.error(err);
 }

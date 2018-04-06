@@ -6,6 +6,6 @@ var end = function(){
 	message.channel.send("Pong! `" + timeDiff + " ms`")
 }*/
 
-exports.run = (client, message, args) => {
+exports.run = (client, message, args, lastimage) => {
 	message.reply("Pong!").catch(console.error);
 }
