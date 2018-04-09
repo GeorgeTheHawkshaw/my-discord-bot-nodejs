@@ -7,5 +7,6 @@ var end = function(){
 }*/
 
 exports.run = (client, message, args, lastimage) => {
-	message.reply("Pong!").catch(console.error);
+	const msg = await message.reply("Pong!");
+	msg.edit(`Pong! ${msg.createdTimestamp - message.createdTimestamp}ms. DiscordJS API - ${Math.round(client.ping)}ms`);
 }
