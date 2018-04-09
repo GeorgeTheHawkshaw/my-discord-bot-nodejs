@@ -3,6 +3,7 @@ const download = require('image-downloader')
 const fs = require("fs");
 const client = new Discord.Client
 const config = require("./config.json")
+const colors = require("colors")
 var dispatcher = null
 var startTime, endTime
 var lastimage = ""
