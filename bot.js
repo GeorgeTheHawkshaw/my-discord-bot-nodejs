@@ -16,16 +16,10 @@ var lastimage = ""
                        });
  });
 
-client.on('message', message => {
+client.on('message', async message => {
 	command(message);
-	start();
 	console.log(message.author.username + " (" + message.author.tag + "), said \"" + message.content + "\" on #" + message.channel.name)
 });
-
-//Start Timer
-var start = function(){
-	startTime = new Date();
-}
 
 
 var command = function(message){
