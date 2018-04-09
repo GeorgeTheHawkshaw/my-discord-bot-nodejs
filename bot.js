@@ -19,7 +19,8 @@ var lastimage = ""
 
 client.on('message', async message => {
 	command(message);
-	console.log(message.author.username + " (" + message.author.tag + "), said \"" + message.content + "\" on #" + message.channel.name)
+	console.log(colors.green.underline(message.author.tag))
+	console.log(colors.yellow.bold("\"" + message.content + "\"" ) + " on #" + message.channel.name + "\n")
 });
 
 
