@@ -1,7 +1,7 @@
 const download = require('image-downloader')
 const Jimp = require("jimp")
 const Discord = require("discord.js")
-export.run(client, message, args, lastimage) => {
+exports.run = (client, message, args, lastimage) => {
 	message.channel.send("yes.")
 	message.channel.startTyping();
 	download.image({
