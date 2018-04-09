@@ -1,12 +1,8 @@
-/*
-//End Timer and Record Duration
-var end = function(){
-	endTime = new Date();
-	var timeDiff = endTime - startTime;
-	message.channel.send("Pong! `" + timeDiff + " ms`")
-}*/
-
-exports.run = (client, message, args, lastimage) => {
-	const msg = await message.reply("Pong!");
-	msg.edit(`Pong! ${msg.createdTimestamp - message.createdTimestamp}ms. DiscordJS API - ${Math.round(client.ping)}ms`);
+exports.run = async (client, message, args, lastimage) => {
+	var m = message;
+	var msg = await message.channel.send("Pong!")
+	//console.log(msg);
+	var pingTime = msg.createdTimestamp - m.createdTimestamp
+	var clientTime = Math.round(client.ping)
+	msg.edit("Pong! `" + pingTime + "ms` -- API Ping `" + clientTime + "ms`");
 }
