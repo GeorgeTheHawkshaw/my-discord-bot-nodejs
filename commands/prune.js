@@ -1,3 +1,5 @@
+const colors = require("colors")
+
 exports.run = async (client, message, args, lastimage) => {
 	const counts = parseInt(args[0],10)
 
@@ -7,5 +9,6 @@ exports.run = async (client, message, args, lastimage) => {
 
   const fetchEm = await message.channel.fetchMessages({count: counts});
   message.channel.bulkDelete(fetchEm)
+	console.log(colors.magenta("Deleted " + counts + " messages"))
 .catch(error => message.reply(`Oh Fiddlesticks! I wasn't able to delete the message because: ${error}`));
 }
