@@ -4,7 +4,7 @@ const Discord = require("discord.js")
 exports.run = (client, message, args, lastimage) => {
 	message.channel.startTyping();
 	download.image({
-		url: lastimage
+		url: lastimage,
 		dest: 'images'
 	}).then(({
 		filename,
