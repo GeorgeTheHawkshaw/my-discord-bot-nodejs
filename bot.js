@@ -1,12 +1,16 @@
 const Discord = require("discord.js")
+const music = require("discord.js-musicbot-addon")
 const download = require('image-downloader')
 const fs = require("fs");
 const client = new Discord.Client
 const config = require("./config.json")
 const colors = require("colors")
+const ytdl = require('ytdl-core');
 var dispatcher = null
 var startTime, endTime
 var lastimage = ""
+
+
 
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
@@ -17,11 +21,13 @@ fs.readdir("./events/", (err, files) => {
   });
 });
 
+
 client.on('message', async message => {
   command(message);
   console.log(colors.green.underline(message.author.tag))
   console.log(colors.yellow.bold("\"" + message.content + "\"") + " on #" + message.channel.name + "\n")
 });
+
 
 
 var command = function(message) {
