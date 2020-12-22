@@ -1,6 +1,6 @@
 config.json
 invite.txt
 /node_modules
-!/images/arbitaryImage
+!/images/arbitraryImage
 !/images/pointing-guy.jpg
 /images/*
