@@ -7,8 +7,10 @@ exports.run = async (client, message, args, lastimage) => {
     return message.reply("Hey! Uhhhhh could you enter a number between 2 and 100 for me to delete?")
   }
 
-  const fetchEm = await message.channel.fetchMessages({count: counts});
-  message.channel.bulkDelete(fetchEm)
-	console.log(colors.magenta("Deleted " + counts + " messages"))
-.catch(error => message.reply(`Oh Fiddlesticks! I wasn't able to delete the message because: ${error}`));
-}
+  //const fetchEm = await message.channel.messages.fetch({count: counts});
+  //message.channel.bulkDelete(fetchEm)
+	console.log(counts);
+	message.channel.bulkDelete(counts)
+	.catch(console.error);
+	console.log(colors.magenta(`Deleted ${counts} messages`))
+};

@@ -23,10 +23,9 @@ exports.run = (client, message, args, lastimage) => {
 		});
 
 		function wait(){
-			var embed = new Discord.RichEmbed().attachFile(filename).setDescription("Tada!");
-			message.channel.send({
-				embed
-			})
+			message.channel.send({files: [filename]});
+			//var embed = new Discord.RichEmbed().attachFile(filename).setDescription("Tada!");
+			//message.channel.send({embed})
 			message.channel.stopTyping();
 		}
 		setTimeout(wait, 1500)

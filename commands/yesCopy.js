@@ -2,12 +2,13 @@ const download = require('image-downloader')
 const Jimp = require("jimp")
 const Discord = require("discord.js")
 const colors = require("colors")
-exports.run = (client, message, args, lastimage) => {
+exports.run = (client, message, args, imageMap) => {
 	message.channel.send("yes.")
 	message.channel.startTyping();
-	download.image({
-		url: lastimage,
-		//url: images.get(message.channel.id),
+	if(imageMap.has(message.channel.id)){
+		download.image({
+		//url: lastimage,
+		url: imageMap.get(message.channel.id),
 		dest: 'images'
 	}).then(({
 		filename,
@@ -37,4 +38,5 @@ exports.run = (client, message, args, lastimage) => {
 		}).catch((err) => {
 			throw err
 		})
+	}
 	}

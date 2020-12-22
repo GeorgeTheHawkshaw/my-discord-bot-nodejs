@@ -22,14 +22,13 @@ exports.run = (client, message, args, lastimage) => {
 				});
 
 				function waitaBit(){
-					var embed = new Discord.RichEmbed().attachFile(filename).setDescription("Inverted bois")
-					message.channel.send({
-						embed
-					})
+					//var embed = new Discord.MessageEmbed().attachFiles(filename).setDescription("Inverted bois");
+					//message.channel.send({embed})
+					message.channel.send({files: [filename]});
 				}
 				setTimeout(waitaBit, 1500)
 
 			}).catch((err) => {
-				throw err
+				throw err;
 			})
 }
